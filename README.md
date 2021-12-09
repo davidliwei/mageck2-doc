@@ -12,6 +12,10 @@ We provide a set of running examples for mageck2. See [mageck2-demo](https://git
 
 # Usage
 
+**Note:** mageck2 is compatible with most functions in mageck. Therefore, if you know how to run mageck, you should have no problem with most mageck2 functions.
+
+
+
 # File formats
 
 # FAQ 
