@@ -42,7 +42,7 @@ We provide a set of running examples for mageck2. See [mageck2-demo](https://git
 
 ## Usage
 
-See [Usage page](USAGE.md].
+See [Usage page](USAGE.md).
 
 
 ## File formats
