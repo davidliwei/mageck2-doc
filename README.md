@@ -34,7 +34,7 @@ mageck2 is part of the softwares and databases for functional genetic screens, w
 
 ## Installation
 
-See [INSTALL.md](INSTALL.md) for more details.
+See [installation page](INSTALL.md) for more details.
 
 ## Demo
 
@@ -42,7 +42,7 @@ We provide a set of running examples for mageck2. See [mageck2-demo](https://git
 
 ## Usage
 
-
+See [Usage page](USAGE.md].
 
 
 ## File formats
