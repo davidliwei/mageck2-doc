@@ -109,3 +109,159 @@ Keep intermediate files.
 
 Test running. If this option is on, MAGeCK will only
                         process the first 1M records for each file.
+
+### Optional arguments for processing fastq files:
+
+*  --fastq-2 FASTQ_2 [FASTQ_2 ...]
+
+Paired sample fastq files (or fastq.gz files), the
+                        order of which should be consistent with that in fastq
+                        option.
+                        
+*  --count-pair COUNT_PAIR
+                        
+Report all valid alignments per read or pair (default:
+                        False).
+*  --trim-5 TRIM_5       
+
+Length of trimming the 5' of the reads. Users can
+                        specify multiple trimming lengths, separated by comma
+                        (,); for example, "7,8". Use "AUTO" to allow MAGeCK to
+                        automatically determine the trimming length. Default
+                        AUTO.
+*  --sgrna-len SGRNA_LEN
+
+Length of the sgRNA. Default 20. ATTENTION: after
+                        v0.5.3, the program will automatically determine the
+                        sgRNA length from library file; so only use this if
+                        you turn on the --unmapped-to-file option.
+*  --count-n             
+
+Count sgRNAs with Ns. By default, sgRNAs containing N
+                        will be discarded.
+*  --reverse-complement 
+
+Reverse complement the sequences in library for read
+                        mapping. Note: for performance considerations, only
+                        the guide sequences are reverse complemented, not the
+                        read.
+
+## Optional arguments for quality controls:
+
+
+*  --day0-label DAY0_LABEL
+                        
+Turn on the negative selection QC and specify the
+                        label for control sample (usually day 0 or plasmid).
+                        For every other sample label, the negative selection
+                        QC will compare it with day0 sample, and estimate the
+                        degree of negative selections in essential genes.
+*  --gmt-file GMT_FILE   
+
+The pathway file used for QC, in GMT format. By
+                        default it will use the GMT file provided by MAGeCK.
+                        
+
+### Optional arguments for searching for UMIs:
+
+*  --umi {none,firstpair,secondpair,auto}
+
+Search UMIs, located within the first pair or the
+                        second pair of the read, or automatically search for
+                        possible UMIs. If you are aware of the location of the
+                        UMI, specify the values of --umi-start/--umi-end (if
+                        --umi firstpair), or --umi-start-2/--umi-end-2 (if
+                        --umi secondpair). The program will automatically
+                        search for UMI locations if --umi auto.
+                        
+*  --umi-start UMI_START
+
+The relative start position of UMI from guides, if UMI
+                        is found on the first pair. For example, for a read
+                        NNNNAATACGNNNCGACNNNN with guide AATACG and UMI CGAC,
+                        set --umi-start to 4 and --umi-end to 8.
+                        
+*  --umi-end UMI_END     
+
+The relative end position of UMI from guides, if UMI
+                        is found on the first pair.
+                        
+*  --umi-start-2 UMI_START_2
+
+The relative start position of UMI (from the first
+                        nucleotide of the read), if UMI is found on the second
+                        pair. For example, for a read NNNNCGAC with UMI CGAC,
+                        set --umi-start-2 to 4 and --umi-end-2 to 8.
+                        
+*  --umi-end-2 UMI_END_2
+
+The relative end position of UMI (from the first
+                        nucleotide of the read), if UMI is found on the second
+                        pair.
+
+
+### Optional arguments for counting paired-guide screens:
+
+*  --pairguide {none,firstpair,secondpair,auto}
+
+Search for second gRNA, located within the first pair
+                        or the second pair of the read, or automatically
+                        search for possible guides. If you are aware of the
+                        location of the guide, specify the values of --pg-
+                        start/--pg-end (if --pairguide firstpair), or --pg-
+                        start-2/--pg-end-2 (if --pairguide secondpair). The
+                        program will automatically search for locations if
+                        --pairguide auto.
+                        
+*  --list-seq-2 LIST_SEQ_2
+
+A library file for the second sgRNA, containing the
+                        list of sgRNA names, their sequences and associated
+                        genes. Support file format: csv and txt.
+                        
+*  --reverse-complement-2
+
+Reverse complement the sequences in the second pair
+                        guide library for read mapping. Note: for performance
+                        considerations, only the guide sequences are reverse
+                        complemented, not the read.
+                        
+*  --pg-start PG_START   
+
+The relative start position of UMI from guides, if UMI
+                        is found on the first pair. For example, for a read
+                        NNNNAATACGNNNCGACNNNN with guide AATACG and UMI CGAC,
+                        set --umi-start to 4 and --umi-end to 8.
+                        
+*  --pg-end PG_END       
+
+The relative end position of UMI from guides, if UMI
+                        is found on the first pair.
+                        
+*  --pg-start-2 PG_START_2
+
+The relative start position of UMI (from the first
+                        nucleotide of the read), if UMI is found on the second
+                        pair. For example, for a read NNNNCGAC with UMI CGAC,
+                        set --umi-start-2 to 4 and --umi-end-2 to 8.
+                        
+*  --pg-end-2 PG_END_2   
+
+The relative end position of UMI (from the first
+                        nucleotide of the read), if UMI is found on the second
+                        pair.
+                        
+*  --pg-min-read PG_MIN_READ
+
+Only report paired-guides whose total reads in all
+                        samples no less than this number. Setting to higher
+                        numbers to avoid reporting a large number of records
+                        with very few reads. Default 2.
+                        
+*  --pg-pair-only PG_PAIR_ONLY
+
+Only report paired-guides whose combination is listed
+                        in the file designated by --pg-pair-only. Each line in
+                        this file should has the format "sgid_1 sgid_2", where
+                        sgid_1 and sgid_2 are sgRNA IDs from --list-seq and
+                        --list-seq-2, respectively.
