@@ -2,58 +2,49 @@
 
 ## Prerequisites
 
-mageck2 needs the following packages for proper running:
+mageck2 requires:
 
-* numpy
-* scipy
-* R/Rstudio (optional; only if you need to generate html files from R Markdown files)
+* Python &ge; 3.7
+* A C++ compiler (`g++` or `clang++`) and `make`, used to build the bundled RRA component
+* R / RStudio (optional; only if you want to generate HTML reports from the R Markdown files)
 
-## Installation from github
+The Python package dependencies (numpy, scipy, pandas, matplotlib, statsmodels) are installed
+automatically by pip.
 
-### Step 1: download the source code
+## Installation from GitHub
 
-Either download the zip file directly from [mageck2](https://github.com/davidliwei/mageck), 
-or use the git clones command in your termincal:
+The recommended way to install mageck2 is with `pip`.
+
+Install the latest version directly:
+
+    pip install git+https://github.com/davidliwei/mageck2.git
+
+or clone the repository and install from a local copy:
 
     git clone https://github.com/davidliwei/mageck2.git
-    
+    cd mageck2
+    pip install .
 
-### Step 2: installation 
+To install into your user environment without root privileges, add `--user`:
 
-After that, invoke python setup.py:
+    pip install --user git+https://github.com/davidliwei/mageck2.git
 
+## Test the installation
 
-    python setup.py install
-
-
-For linux users without root privileges:
-
-
-    python setup.py install --user
- 
-### Step 3: test whether the installation is successful
-
-In your command line, type 
+In your command line, type
 
     mageck2
-    
-to see if it works. If an "Command not found" error shows up, go to Step 4 for path set up
 
-### Setp 4: set up the environment variables
+to see if it works. You should see the list of available subcommands.
 
-**In most systems you don't need to set up the environment variables. Just type "mageck2" in the command line to see if it is needed.**
+## Troubleshooting: "command not found"
 
-If you get a "command not found" error, that indicates the environment variables are not properly set up. There are several additional steps to finish the installation. 
-First you need to add the path of the mageck2 program to your **PATH** variable. 
+`pip` installs the `mageck2` and `RRA` programs into the environment's `bin` directory. If you
+see a "command not found" error after a `--user` installation, that directory may not be on your
+`PATH`. Find where pip installed the scripts:
 
+    python -m site --user-base
 
-If you use the --user option during installation (or other situations), 
-first determine where mageck2 is installed. 
-See this [Q and A](https://sourceforge.net/p/mageck/wiki/QA/#where-is-mageck-binary-installed) for additional steps to determine the correct bin directory.
-
-If your bin directory is located in */Users/john/.local/bin*, then type the following:
-
+and add its `bin` subdirectory to your `PATH`. For example, if the base is `/Users/john/.local`:
 
     export PATH=$PATH:/Users/john/.local/bin
-
-
