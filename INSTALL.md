@@ -5,7 +5,9 @@
 mageck2 requires:
 
 * Python &ge; 3.7
-* A C++ compiler (`g++` or `clang++`) and `make`, used to build the bundled RRA component
+* A C++ compiler and `make`, used to build the bundled RRA component. The build uses the
+  system `c++` driver (`g++` on Linux, `clang++` on macOS); you can override it with
+  `make CC=...` if needed.
 * R / RStudio (optional; only if you want to generate HTML reports from the R Markdown files)
 
 The Python package dependencies (numpy, scipy, pandas, matplotlib, statsmodels) are installed
