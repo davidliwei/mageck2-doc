@@ -49,3 +49,13 @@ See [Usage page](USAGE.md).
 
 ## FAQ 
 
+# Related repositories
+
+* [mageck2](https://github.com/davidliwei/mageck2) — source code and issue tracker
+* [mageck2-demo](https://github.com/davidliwei/mageck2-demo) — runnable example datasets and workflows
+* [mageck2-doc](https://github.com/davidliwei/mageck2-doc) — this documentation
+
+# License
+
+This documentation is released under the [BSD 3-Clause License](LICENSE), the same license as mageck2.
+
