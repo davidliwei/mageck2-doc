@@ -1,6 +1,6 @@
 # mageck2-doc
 
-[mageck2](https://github.com/davidliwei/mageck2) is a model-based analysis tool for CRISPR screens, developed by the [Wei Li lab](https://weililab.org) from Children's National Hospital/George Washington University. 
+[mageck2](https://github.com/davidliwei/mageck2) is a model-based analysis tool for CRISPR screens, developed by the [Wei Li lab](https://weililab.org) at the University of Maryland School of Medicine and University of Maryland - Institute for Health Computing. 
 
 
 
