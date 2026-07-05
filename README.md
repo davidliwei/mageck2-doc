@@ -47,7 +47,15 @@ See [Usage page](USAGE.md).
 
 ## File formats
 
-## FAQ 
+See the [file formats page](FILE_FORMATS.md) for the input and output file
+specifications.
+
+## FAQ
+
+Frequently asked questions are being migrated from the legacy MAGeCK wiki. In the
+meantime, see the [MAGeCK Q&A on SourceForge](https://sourceforge.net/p/mageck/wiki/QA/)
+and the [MAGeCK Google group](https://groups.google.com/g/mageck). Most MAGeCK
+answers apply to mageck2.
 
 # Related repositories
 
