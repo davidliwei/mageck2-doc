@@ -347,7 +347,7 @@ under DMSO whose role reverses under estrogen.
 **Paired designs.** When replicates are paired (each replicate has its own control
 and treatment), you can either use RRA with `--paired`:
 
-    mageck2 test -t treatment_rep1,treatment_rep2 -c control_rep1,control_rep2 --paired
+    mageck2 test -k count_table.txt -t treatment_rep1,treatment_rep2 -c control_rep1,control_rep2 -n paired --paired
 
 or model it in MLE with a replicate column:
 
@@ -373,9 +373,9 @@ SAM/BAM to `count` (supported since v0.5.5).
 
     # 2. align, trimming the 23-nt 5' and 8-nt 3' constant regions; --norc keeps
     #    guides from mapping to their reverse complement
-    bowtie2 -x bowtie2_ind_yusa -U ERR376999.fastq -5 23 -3 8 --norc \
+    bowtie2 -x bowtie2_ind_yusa -U ERR376999.fastq.gz -5 23 -3 8 --norc \
         | samtools view -bS - > ERR376999.bam
-    bowtie2 -x bowtie2_ind_yusa -U ERR376998.fastq -5 23 -3 8 --norc \
+    bowtie2 -x bowtie2_ind_yusa -U ERR376998.fastq.gz -5 23 -3 8 --norc \
         | samtools view -bS - > ERR376998.bam
 
     # 3. count from the BAM files instead of FASTQ
