@@ -36,9 +36,11 @@ mageck2 is part of the softwares and databases for functional genetic screens, w
 
 See [installation page](INSTALL.md) for more details.
 
-## Demo
+## Tutorials and demos
 
-We provide a set of running examples for mageck2. See [mageck2-demo](https://github.com/davidliwei/mageck2-demo) for more details.
+See the [tutorials](TUTORIAL.md) for step-by-step walkthroughs, and
+[mageck2-demo](https://github.com/davidliwei/mageck2-demo) for the runnable
+example datasets and scripts.
 
 ## Usage
 
@@ -47,7 +49,13 @@ See [Usage page](USAGE.md).
 
 ## File formats
 
-## FAQ 
+See the [file formats page](FILE_FORMATS.md) for the input and output file
+specifications.
+
+## FAQ
+
+See the [FAQ page](FAQ.md) for installation, usage, results-interpretation, and
+visualization questions.
 
 # Related repositories
 
