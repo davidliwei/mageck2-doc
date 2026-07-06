@@ -66,8 +66,15 @@ Used by `pathway` and by `count`'s negative-selection QC.
 
 ### CNV files (`--cnv-norm`, `--cnv-est`)
 
-- `--cnv-norm`: a matrix of copy-number values, genes (rows) × cell lines
-  (columns), used to correct CNV-biased scores.
+- `--cnv-norm`: a tab-separated matrix of copy-number values, one gene per row
+  and one cell line per column, used to correct CNV-biased scores. The first
+  column header **must** be literally `SYMBOL` (mageck2 looks up gene ids by that
+  name); the remaining headers are cell-line names, matched to `--cell-line` (or,
+  for `mle`, to the design-matrix condition labels):
+
+      SYMBOL	HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE	KBM7
+      A1BG	0.1105	0.0433
+      NAT2	0.0104	-0.2011
 - `--cnv-est`: a BED file of gene positions, used to *estimate* CNV profiles
   directly from the screen data.
 
