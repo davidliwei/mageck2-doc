@@ -228,35 +228,40 @@ Reverse complement the sequences in the second pair
                         
 *  --pg-start PG_START   
 
-The relative start position of UMI from guides, if UMI
-                        is found on the first pair. For example, for a read
-                        NNNNAATACGNNNCGACNNNN with guide AATACG and UMI CGAC,
-                        set --umi-start to 4 and --umi-end to 8.
+The relative start position of the second guide,
+                        measured from the end of the first guide, when the
+                        second guide is on the first read (--pairguide
+                        firstpair). For a second guide immediately following
+                        the first guide, set --pg-start to 0.
                         
 *  --pg-end PG_END       
 
-The relative end position of UMI from guides, if UMI
-                        is found on the first pair.
+The relative end position of the second guide, measured
+                        from the end of the first guide, when the second guide
+                        is on the first read (--pairguide firstpair).
                         
 *  --pg-start-2 PG_START_2
 
-The relative start position of UMI (from the first
-                        nucleotide of the read), if UMI is found on the second
-                        pair. For example, for a read NNNNCGAC with UMI CGAC,
-                        set --umi-start-2 to 4 and --umi-end-2 to 8.
+The relative start position of the second guide,
+                        measured from the first nucleotide of the second read,
+                        when the second guide is on the second read
+                        (--pairguide secondpair). For example, for a 20bp
+                        second guide at the very start of read 2, set
+                        --pg-start-2 to 0 and --pg-end-2 to 20.
                         
 *  --pg-end-2 PG_END_2   
 
-The relative end position of UMI (from the first
-                        nucleotide of the read), if UMI is found on the second
-                        pair.
+The relative end position of the second guide, measured
+                        from the first nucleotide of the second read, when the
+                        second guide is on the second read (--pairguide
+                        secondpair).
                         
 *  --pg-min-read PG_MIN_READ
 
 Only report paired-guides whose total reads in all
                         samples no less than this number. Setting to higher
                         numbers to avoid reporting a large number of records
-                        with very few reads. Default 2.
+                        with very few reads. Default 3.
                         
 *  --pg-pair-only PG_PAIR_ONLY
 
