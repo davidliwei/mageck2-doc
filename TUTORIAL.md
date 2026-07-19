@@ -176,6 +176,13 @@ Design-matrix rules:
   `0`/`1`.
 - At least one initial/reference sample (day 0 or plasmid) should have `1` only in
   the `baseline` column.
+- If more than one sample has `1` only in the `baseline` column (e.g. both
+  `HL60.initial` and `KBM7.initial` above), they are **pooled** into a single
+  shared reference — their average defines the baseline, and every beta is measured
+  against it. MAGeCK does not treat them as separate cell lines. This assumes the
+  initials share a common starting representation (here, the same library plasmid
+  pool). If your references genuinely differ, run `mle` separately for each so each
+  gets its own baseline.
 
 Run MLE:
 
