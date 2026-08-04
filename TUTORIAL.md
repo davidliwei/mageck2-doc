@@ -154,11 +154,12 @@ selected gene. From here you can run [pathway enrichment](USAGE.md#pathway) or
 *(demo folder: `demo3_mle_with_cnv_correction`)*
 
 The MLE module estimates a single **beta score** per gene per condition, instead of
-the separate positive/negative scores of `test`. A beta score behaves like a log
-fold change: **negative = depleted / essential**, **positive = enriched**. Because
-every condition is on the same scale, beta scores can be compared directly across
-conditions and experiments, and the model can incorporate sgRNA efficiency
-(Tutorial 11).
+the separate positive/negative scores of `test`. A beta score is a **natural-log**
+fold change: **negative = depleted / essential**, **positive = enriched**. (A
+4-fold dropout is a beta of about `-1.39`, not `-2`; divide by `ln 2` ≈ `0.693` to
+read betas as log2.) Because every condition is on the same scale, beta scores can
+be compared directly across conditions and experiments, and the model can
+incorporate sgRNA efficiency (Tutorial 11).
 
 Conditions are described by a **design matrix**. `designmat.txt` is tab-separated:
 
@@ -174,8 +175,18 @@ Design-matrix rules:
 - A required `baseline` column is `1` for every sample — the shared reference state.
 - The remaining columns are the conditions you want beta scores for; entries are
   `0`/`1`.
-- At least one initial/reference sample (day 0 or plasmid) should have `1` only in
-  the `baseline` column.
+- At least one initial/reference sample (day 0 or plasmid) must have `1` only in
+  the `baseline` column, and **one of them must be the first row**. The model
+  consumes the first row as the reference and never reads the conditions assigned
+  to it, so listing a treated sample first would measure every beta against the
+  wrong reference. `mageck2 mle` rejects such a matrix rather than fitting it.
+- If more than one sample has `1` only in the `baseline` column (e.g. both
+  `HL60.initial` and `KBM7.initial` above), they are **pooled** into a single
+  shared reference — their average defines the baseline, and every beta is measured
+  against it. MAGeCK does not treat them as separate cell lines. This assumes the
+  initials share a common starting representation (here, the same library plasmid
+  pool). If your references genuinely differ, run `mle` separately for each so each
+  gets its own baseline.
 
 Run MLE:
 
