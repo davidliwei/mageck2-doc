@@ -28,7 +28,7 @@
                      [--umi {none,firstpair,secondpair,auto}]
                      [--umi-start UMI_START] [--umi-end UMI_END]
                      [--umi-start-2 UMI_START_2] [--umi-end-2 UMI_END_2]
-                     [--pairguide {none,firstpair,secondpair,auto}]
+                     [--pairguide {none,firstpair,secondpair}]
                      [--list-seq-2 LIST_SEQ_2] [--reverse-complement-2]
                      [--pg-start PG_START] [--pg-end PG_END]
                      [--pg-start-2 PG_START_2] [--pg-end-2 PG_END_2]
@@ -202,16 +202,16 @@ The relative end position of UMI (from the first
 
 ### Optional arguments for counting paired-guide screens:
 
-*  --pairguide {none,firstpair,secondpair,auto}
+*  --pairguide {none,firstpair,secondpair}
 
 Search for second gRNA, located within the first pair
-                        or the second pair of the read, or automatically
-                        search for possible guides. If you are aware of the
-                        location of the guide, specify the values of --pg-
-                        start/--pg-end (if --pairguide firstpair), or --pg-
-                        start-2/--pg-end-2 (if --pairguide secondpair). The
-                        program will automatically search for locations if
-                        --pairguide auto.
+                        or the second pair of the read. Specify the location of
+                        the guide with --pg-start/--pg-end (if --pairguide
+                        firstpair), or --pg-start-2/--pg-end-2 (if --pairguide
+                        secondpair); these are required. Note: the "auto"
+                        choice is disabled pending a reimplementation, as the
+                        search it used located UMIs rather than guides and
+                        never found a usable window.
                         
 *  --list-seq-2 LIST_SEQ_2
 
@@ -269,7 +269,11 @@ Only report paired-guides whose combination is listed
                         in the file designated by --pg-pair-only. Each line in
                         this file should has the format "sgid_1 sgid_2", where
                         sgid_1 and sgid_2 are sgRNA IDs from --list-seq and
-                        --list-seq-2, respectively.
+                        --list-seq-2, respectively. IDs that were dropped from
+                        a library for duplicating an earlier sgRNA sequence are
+                        resolved to the sgRNA that represents that sequence, so
+                        a pair file written against the original library
+                        nomenclature does not need to be rewritten.
 
 
 ## test
