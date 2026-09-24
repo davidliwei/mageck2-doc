@@ -250,13 +250,30 @@ If you know the UMI position, set it explicitly with `--umi-start/--umi-end` (or
 *(demo folder: `demo7_count_paired_guide`)*
 
 For vectors carrying two guides, provide the second library with `--list-seq-2`
-and `--pairguide auto`:
+and tell `count` where in the read the second guide sits:
 
     mageck2 count -l lib/Cpf1_lib.txt -n count/pg_test \
         --sample-label HAP1_Dual,HAP1_Dual_Torin1 \
-        --pairguide auto --reverse-complement --list-seq-2 lib/Cas9_lib.txt \
+        --pairguide secondpair --pg-start-2 3 --pg-end-2 23 \
+        --reverse-complement --list-seq-2 lib/Cas9_lib.txt \
         --fastq   fastq/SRR10969645_1.fastq.gz fastq/SRR10969652_1.fastq.gz \
         --fastq-2 fastq/SRR10969645_2.fastq.gz fastq/SRR10969652_2.fastq.gz
+
+Use `--pairguide secondpair` with `--pg-start-2/--pg-end-2` when the second guide
+is on read 2, measured from the first base of that read; use `--pairguide
+firstpair` with `--pg-start/--pg-end` when both guides are on read 1, measured
+from the end of the first guide. The coordinates are 0-based and end-exclusive,
+so `--pg-start-2 3 --pg-end-2 23` selects a 20bp guide, and they are required:
+`--pairguide auto` was removed in 0.3.0 because its search located UMIs rather
+than guides ([mageck2#32](https://github.com/davidliwei/mageck2/issues/32)).
+
+To find the window for a new dataset, count how many reads match the second-guide
+library exactly at each candidate offset — the correct offset stands out by an
+order of magnitude. The `demo7_count_paired_guide` README has a ready-made
+command for this.
+
+The *first* guide needs no coordinates; `count` locates it the same way it does
+for a single-guide screen.
 
 This writes a `*.pg_count.txt` file whose rows are the two concatenated sgRNA IDs
 and the two concatenated gene names, followed by per-sample counts. Use
