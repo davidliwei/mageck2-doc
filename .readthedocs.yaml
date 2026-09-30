@@ -1,0 +1,22 @@
+# Read the Docs build configuration.
+# https://docs.readthedocs.io/en/stable/config-file/v2.html
+version: 2
+
+build:
+  os: ubuntu-24.04
+  tools:
+    python: "3.12"
+
+sphinx:
+  configuration: docs/conf.py
+  # The reference pages are generated from mageck2's argument parser. A warning
+  # here usually means a cross-reference or an anchor stopped resolving, which is
+  # exactly the drift this setup exists to catch -- so it fails the build.
+  fail_on_warning: true
+
+formats:
+  - pdf
+
+python:
+  install:
+    - requirements: docs/requirements.txt

@@ -37,12 +37,12 @@ followed by one read-count column per sample:
 Sample labels in the header are what you pass to `-t`/`-c` (in `test`) or
 `--include-samples` (in `mle`).
 
-### Design matrix (`-d` / `--design-matrix`) {#design-matrix}
+### Design matrix
 
-Used by `mle` to describe the experimental design. Tab-separated. The first
-column (`Samples`) lists sample labels matching the count table; the remaining
-columns are the model variables, with a required `baseline` column of all 1s.
-Entries are 0/1:
+Given to `mle` with `-d`/`--design-matrix`, to describe the experimental design.
+Tab-separated. The first column (`Samples`) lists sample labels matching the
+count table; the remaining columns are the model variables, with a required
+`baseline` column of all 1s. Entries are 0/1:
 
     Samples	baseline	HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE	KBM7
     HL60.initial	1	0	0
@@ -50,8 +50,9 @@ Entries are 0/1:
     HL60.final	1	1	0
     KBM7.final	1	0	1
 
-The matrix may also be given inline as a quoted string, e.g. `-d "1,1;1,0"`
-together with `--include-samples` and `--beta-labels`.
+The matrix may also be given inline as a quoted string, e.g. `-d "1,0;1,1"` —
+whose first row is the baseline sample — together with `--include-samples` and
+`--beta-labels`.
 
 ### Control sgRNA / gene list (`--control-sgrna`, `--control-gene`)
 
@@ -149,6 +150,6 @@ Per-gene graphics (and an accompanying report) for the genes given in `--genes`.
 
 ---
 
-See [USAGE.md](USAGE.md) for the command that produces each file, and the
+See the [command-line reference](usage/index.md) for the command that produces each file, and the
 [mageck2-demo](https://github.com/davidliwei/mageck2-demo) repository for
 complete, runnable examples.
