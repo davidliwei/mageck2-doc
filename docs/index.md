@@ -75,8 +75,8 @@ Runnable example datasets and scripts live in a separate repository,
 
 ## The MAGeCK family
 
-MAGeCK2 is part of a set of software and databases for functional genetic
-screens, which also includes:
+MAGeCK2 is part of a set of software for functional genetic screens, which also
+includes:
 
 * [MAGeCK](https://sourceforge.net/p/mageck), the earlier version of MAGeCK2;
 * [MAGeCK-VISPR](https://bitbucket.org/liulab/mageck-vispr), a comprehensive
@@ -86,9 +86,7 @@ screens, which also includes:
   integrative R analysis pipeline for pooled CRISPR functional genetic screens;
 * [scMAGeCK](https://bitbucket.org/weililab/scmageck/src/master/), a
   computational model to identify genes associated with multiple expression
-  phenotypes from CRISPR screening coupled with single-cell RNA sequencing;
-* [CRISP-view](http://crispview.weililab.org/), a database of public functional
-  genetic screening datasets.
+  phenotypes from CRISPR screening coupled with single-cell RNA sequencing.
 
 ## Repositories
 
