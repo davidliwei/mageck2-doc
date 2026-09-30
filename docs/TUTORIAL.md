@@ -8,7 +8,7 @@ commands from inside the matching folder. Tutorials that use large public datase
 
 **Prerequisite:** install mageck2 first (see [installation](INSTALL.md)). For the
 input/output file layouts referenced here, see [file formats](FILE_FORMATS.md);
-for the full option reference, see [usage](USAGE.md).
+for the full option reference, see the [command-line reference](usage/index.md).
 
 ## Outline
 
@@ -146,8 +146,8 @@ selected** genes, sort by the positive-selection rank column (column 12):
     sort -k 12,12n esccp.gene_summary.txt | head
 
 In this screen `TRP53` (the mouse *TP53* homolog) is the strongest positively
-selected gene. From here you can run [pathway enrichment](USAGE.md#pathway) or
-[plot](USAGE.md#plot) individual genes.
+selected gene. From here you can run [pathway enrichment](usage/pathway.md) or
+[plot](usage/plot.md) individual genes.
 
 ## 4. Multi-condition analysis with MAGeCK MLE
 
@@ -431,7 +431,7 @@ Pass that table to `mle`, telling it which columns hold the sgRNA id and the sco
         --sgrna-eff-score-column 3
 
 Guides predicted to be inefficient are down-weighted when estimating beta scores;
-see the [`mle` options](USAGE.md#mle).
+see the [`mle` options](usage/mle.md).
 
 ---
 

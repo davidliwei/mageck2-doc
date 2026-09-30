@@ -1,0 +1,14 @@
+# Documentation build requirements.
+#
+# mageck2 itself is a build dependency: the reference pages under usage/ are
+# generated from its argument parser, so the build imports it. Tracking main
+# keeps the option reference current; pin this to a tag when cutting versioned
+# documentation for a release.
+sphinx>=7.3
+myst-parser>=3.0
+sphinx-argparse>=0.5
+sphinx-copybutton>=0.5
+sphinx-design>=0.6
+furo>=2024.8.6
+
+mageck2 @ git+https://github.com/davidliwei/mageck2@main
