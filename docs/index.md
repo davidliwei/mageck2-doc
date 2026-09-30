@@ -82,7 +82,7 @@ screens, which also includes:
 * [MAGeCK-VISPR](https://bitbucket.org/liulab/mageck-vispr), a comprehensive
   quality control, analysis and visualization workflow for CRISPR/Cas9 screens,
   which has also been integrated into MAGeCK and MAGeCK2;
-* [MAGeCKFlute](https://bitbucket.org/liulab/mageckflute/src/master/), an
+* [MAGeCKFlute](https://bioconductor.org/packages/MAGeCKFlute/), an
   integrative R analysis pipeline for pooled CRISPR functional genetic screens;
 * [scMAGeCK](https://bitbucket.org/weililab/scmageck/src/master/), a
   computational model to identify genes associated with multiple expression

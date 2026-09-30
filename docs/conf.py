@@ -41,12 +41,21 @@ myst_enable_extensions = [
     "attrs_block",
 ]
 
-templates_path = ["_templates"]
 exclude_patterns = ["_build", "requirements.txt"]
 
 html_theme = "furo"
 html_static_path = ["_static"]
 html_title = f"MAGeCK2 {version}"
+
+# SourceForge and its project pages answer linkcheck's requests with 403 while
+# serving the same URLs normally in a browser. Checking them reports failures
+# that say nothing about this repository, so they are skipped rather than
+# allowed to drown out a real dead link.
+linkcheck_ignore = [
+    r"https://sourceforge\.net/.*",
+    r"https://bowtie-bio\.sourceforge\.net/.*",
+]
+linkcheck_timeout = 20
 
 # Nearly every page is a command line or a file format; copy buttons should not
 # pick up the shell prompt when one is shown.
