@@ -40,10 +40,6 @@ jobs:
   linkcheck:
     name: Link check
     runs-on: ubuntu-latest
-    # External links rot for reasons that have nothing to do with the change
-    # under review, so this reports without blocking. Internal links are already
-    # covered by -W in the build job above.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v7
 
@@ -54,5 +50,11 @@ jobs:
       - name: Install documentation requirements
         run: python -m pip install --upgrade pip && pip install -r docs/requirements.txt
 
+      # External links rot for reasons that have nothing to do with the change
+      # under review, so the findings are reported in this job's log without
+      # failing its check. Internal links are covered by -W in the build job,
+      # which does block. continue-on-error sits on the step rather than the job
+      # so the check reports green; a failed job still shows red either way.
       - name: Check links
+        continue-on-error: true
         run: sphinx-build -b linkcheck docs docs/_build/linkcheck
