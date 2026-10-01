@@ -43,6 +43,15 @@ myst_enable_extensions = [
 
 exclude_patterns = ["_build", "requirements.txt"]
 
+# docutils' smartquotes transform rewrites a double hyphen as an en dash. Option
+# names in their own right are literal markup and survive, but mentions of an
+# option inside a help string did not: --gmt-file rendered with a single en dash
+# in place of the two hyphens, 56 times across the generated reference pages. A
+# reader who copies one of those into a shell gets an unrecognized-argument error
+# with nothing visible to explain it. This is a command-line reference, so
+# typographic punctuation is not worth that.
+smartquotes = False
+
 html_theme = "furo"
 html_static_path = ["_static"]
 html_title = f"MAGeCK2 {version}"
